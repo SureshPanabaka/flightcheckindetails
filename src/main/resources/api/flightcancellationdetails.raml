@@ -1,0 +1,31 @@
+#%RAML 1.0
+title: flightcancellationdetails
+description: AnyAirline callbackURL registr
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/5a8ac5c6-3327-48a6-8ff8-92eb3a8afaac/ # baseUri: http://localhost:8083/cancellations/register
+mediaType: 
+  - application/json
+types:
+  InitialRecords:
+    properties:
+      callbackURL: string
+/cancellations:
+  /register:
+    put:
+      displayName: register callbackURL
+      body:
+        application/json:
+          type: InitialRecords
+          example:  |
+            {
+              "callbackURL":"http://localhost:8083/getFlightCancellationDetails/notification"
+            }
+      responses:
+        200:
+          description: Successfull registration
+          body:
+            application/json:
+              example:  |
+                {
+                "status": 200,
+                "message": "ok"
+                }
